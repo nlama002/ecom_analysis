@@ -60,3 +60,49 @@ Each business question was answered with a standalone SQL query (or set of queri
 
 ---
 *Part of an ongoing data analytics portfolio.*
+
+## Entity Relationship Diagram
+
+```mermaid
+erDiagram
+  CUSTOMERS ||--o{ ORDERS : places
+  ORDERS ||--o| ORDER_STATUS : has
+  CUSTOMERS }o--|| GEO_LOOKUP : located_in
+  ORDERS }o--|| SUPPLIERS : references
+
+  CUSTOMERS {
+    string id PK
+    string marketing_channel
+    string account_creation_method
+    string country_code FK
+    int loyalty_program
+    date created_on
+  }
+  GEO_LOOKUP {
+    string country_code PK
+    string region
+  }
+  ORDERS {
+    string id PK
+    string customer_id FK
+    date purchase_ts
+    string product_id FK
+    string product_name
+    string currency
+    float local_price
+    float usd_price
+    string purchase_platform
+  }
+  ORDER_STATUS {
+    string order_id FK
+    date purchase_ts
+    date ship_ts
+    date delivery_ts
+    date refund_ts
+  }
+  SUPPLIERS {
+    string product_id PK
+    string product_name
+    string supplier
+  }
+```
