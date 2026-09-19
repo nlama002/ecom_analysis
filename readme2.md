@@ -101,7 +101,7 @@ erDiagram
 <img width="694" height="466" alt="Screenshot 2026-09-18 at 8 37 27 PM" src="https://github.com/user-attachments/assets/5583c384-a0a2-43b8-9b5c-6cbb694433ae" />
 
 
-<img width="419" height="234" alt="Screenshot 2026-09-18 at 8 39 06 PM" src="https://github.com/user-attachments/assets/13e08961-970e-434b-94a8-f0c912a0d1b0" />
+<img width="694" height="466" alt="Screenshot 2026-09-18 at 8 39 06 PM" src="https://github.com/user-attachments/assets/13e08961-970e-434b-94a8-f0c912a0d1b0" />
 
 
 The data reveals a clear and repeatable seasonal pattern across 2020–2022. **February and October are consistently the two weakest months of the year**, averaging **-20.7%** and **-34.9%** month-over-month respectively. The October decline is worsening year over year — from -23.9% in 2020, to -25.7% in 2021, to -55.2% in 2022 — suggesting this isn't just a stable seasonal dip anymore but a trend worth investigating further.
