@@ -101,7 +101,6 @@ erDiagram
 <img width="694" height="466" alt="Screenshot 2026-09-18 at 8 37 27 PM" src="https://github.com/user-attachments/assets/5583c384-a0a2-43b8-9b5c-6cbb694433ae" />
 
 
-<img width="653" height="230" alt="Screenshot 2026-09-18 at 8 39 28 PM" src="https://github.com/user-attachments/assets/9a15b085-6ba7-4b95-8ad4-d2229d93be25" />
 <img width="419" height="234" alt="Screenshot 2026-09-18 at 8 39 06 PM" src="https://github.com/user-attachments/assets/13e08961-970e-434b-94a8-f0c912a0d1b0" />
 
 
