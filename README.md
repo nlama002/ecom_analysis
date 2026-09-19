@@ -4,11 +4,13 @@
 
 **Seasonality**
 
-The data reveals a clear and repeatable seasonal pattern across 2020–2022. February and October are consistently the two weakest months of the year, averaging -20.7% and -34.9% month-over-month respectively. The October decline is worsening year over year — from -23.9% in 2020, to -25.7% in 2021, to -55.2% in 2022 — which suggests this isn't just a stable seasonal dip anymore but a trend worth investigating further.
+The data reveals a clear and repeatable seasonal pattern across 2020–2022. February and October are consistently the two weakest months of the year, averaging -20.7% and -34.9% month-over-month respectively. The October decline is worsening year over year from -23.9% in 2020, to -25.7% in 2021, to -55.2% in 2022, which suggests this isn't just a stable seasonal dip anymore but a trend worth investigating further.
 
-March is a reliable recovery month, averaging +21.1% growth across the three years, largely offsetting the February slump. November and December consistently close out the year strong, averaging +16.9% and +24.5% — a clear holiday-driven sales lift present in every year of data. There's also a smaller, secondary dip in June (-5.4%, -4.8%, -10.8%), sitting between the early-year slump and the fall buildup — worth keeping an eye on even though it's less severe than Feb/Oct.
+March is a reliable recovery month, averaging +21.1% growth across the three years, largely offsetting the February slump. November and December consistently close out the year strong, averaging +16.9% and +24.5%, a clear holiday-driven sales lift present in every year of data. There's also a smaller, secondary dip in June (-5.4%, -4.8%, -10.8%), sitting between the early-year slump and the fall buildup, worth keeping an eye on even though it's less severe than Feb/Oct.
 
-Put together, the annual rhythm looks like: strong Nov/Dec → sharp Jan/Feb drop → March rebound → gradual climb through summer → soft June → building toward a fall peak → steep October crash → recovery into the holidays again.<img width="640" height="439" alt="Screenshot 2026-09-18 at 8 14 57 PM" src="https://github.com/user-attachments/assets/1ac8fc00-60b3-4dd0-8d2b-c46d32d80865" />
+Put together, the annual rhythm looks like: strong Nov/Dec → sharp Jan/Feb drop → March rebound → gradual climb through summer → soft June → building toward a fall peak → steep October crash → recovery into the holidays again.
+
+<img width="640" height="439" alt="Screenshot 2026-09-18 at 8 14 57 PM" src="https://github.com/user-attachments/assets/1ac8fc00-60b3-4dd0-8d2b-c46d32d80865" />
 
 **Monthly Sales Trend**
 
@@ -18,31 +20,32 @@ The trend chart backs up the seasonality findings visually. 2020 and 2021 both s
 
 What This Means
 February and October are the two months to proactively defend with promotions, bundles, or targeted campaigns, since the dip repeats every single year without exception.
-Inventory and marketing spend for Nov/Dec should be locked in well before October, given how reliably — and steeply — sales climb heading into year-end.
+Inventory and marketing spend for Nov/Dec should be locked in well before October, given how reliably and steeply sales climb heading into year end.
 2022's underperformance relative to 2020/2021 is the more urgent open question. A follow-up analysis comparing order volume, AOV, and refund rate specifically for 2022 would help determine whether this is a demand problem, a pricing/product-mix shift, or a data completeness issue.
 
 <img width="436" height="240" alt="Screenshot 2026-09-18 at 8 09 40 PM" src="https://github.com/user-attachments/assets/a2b1ccf3-9e05-4254-aa9d-ae08dc2f83d5" />
 
+
 **Recommendations**
 
 1. Launch targeted promotions in February and October.
-These two months show a consistent, repeatable decline every single year (Feb: -20.7% avg, Oct: -34.9% avg) — this isn't noise, it's a pattern stakeholders can plan around. A mid-tier discount, bundle deal, or loyalty-exclusive offer timed for early Feb and early Oct could soften the drop rather than absorbing it passively. Recommend piloting this in the next Feb/Oct cycle and measuring whether the decline narrows.
+These two months show a consistent, repeatable decline every single year (Feb: -20.7% avg, Oct: -34.9% avg), this isn't noise, it's a pattern stakeholders can plan around. A mid-tier discount, bundle deal, or loyalty-exclusive offer timed for early Feb and early Oct could soften the drop rather than absorbing it passively. Recommend piloting this in the next Feb/Oct cycle and measuring whether the decline narrows.
 
 2. Lock in Q4 inventory and marketing budget by September, not October.
-November (+16.9%) and December (+24.5%) are the most reliable growth months in the dataset — but the sharp Oct crash right before the surge means teams need to be prepared ahead of the dip, not reacting to it. Recommend finalizing inventory levels, staffing, and ad spend commitments by end of September each year to avoid missing the Q4 window.
+November (+16.9%) and December (+24.5%) are the most reliable growth months in the dataset but the sharp Oct crash right before the surge means teams need to be prepared ahead of the dip, not reacting to it. Recommend finalizing inventory levels, staffing, and ad spend commitments by the end of September each year to avoid missing the Q4 window.
 
 3. Investigate why 2022 underperformed 2020 and 2021.
 2022 total sales are meaningfully lower than the two prior years, and the October decline in 2022 (-55.2%) is nearly double the severity of 2020/2021. Before treating this as "the new normal," recommend a focused review of:
 
-Order volume vs. average order value in 2022 — was it fewer customers, or the same customers spending less?
-Refund rates in 2022 vs. prior years — did returns spike?
-Marketing channel and spend changes — was there a pullback in acquisition efforts?
+Order volume vs. average order value in 2022, was it fewer customers, or the same customers spending less?
+Refund rates in 2022 vs. prior years did returns spike?
+Marketing channel and spend changes: was there a pullback in acquisition efforts?
 
 4. Prioritize marketing and inventory around the top 3-4 products.
-The 27in 4K Gaming Monitor, Apple Airpods, Macbook Air, and ThinkPad Laptop together account for roughly 96% of total revenue. Recommend concentrating promotional budget and stock planning on these products rather than spreading resources evenly across the full catalog.
+The 27in 4K Gaming Monitor, Apple AirPods, MacBook Air, and ThinkPad Laptop together account for roughly 96% of total revenue. Recommend concentrating promotional budget and stock planning on these products rather than spreading resources evenly across the full catalog.
 
 5. Address the elevated refund rate on laptops.
-ThinkPad Laptop (12%) and Macbook Air (11%) refund rates are more than double the company-wide average (5%), and both are high-AOV items — meaning refunds here carry outsized revenue impact. Recommend a root-cause review (product quality, shipping damage, or expectation mismatch at point of sale) before the next high-volume selling season.
+ThinkPad Laptop (12%) and Macbook Air (11%) refund rates are more than double the company-wide average (5%), and both are high-AOV items meaning refunds here carry outsized revenue impact. Recommend a root-cause review (product quality, shipping damage, or expectation mismatch at point of sale) before the next high-volume selling season.
 
 6. Explore a bundle offer for the Samsung Charging Cable Pack.
 This product drives high order volume (20.3% of orders) but minimal revenue (1.6% of sales) due to its low price point. Recommend testing it as a checkout add-on or bundle with the Gaming Monitor or laptop lines to capture more value per transaction rather than treating it as a standalone SKU.
@@ -93,7 +96,7 @@ Each business question was answered with a standalone SQL query (or set of queri
 Overall Insights — Orders Dataset (BigQuery Analysis)
 
 1. Demand is contracting, sharply, post-pandemic
-MacBook orders in NA spiked 4–6x during 2020 (COVID pull-forward) and have been declining nearly every quarter since — landing at 30 orders in Q4 2022, below pre-pandemic 2019 levels. AOV stayed flat ($1,433–$1,696) throughout, so this is a pure volume story, not a pricing one. If this pattern extends beyond MacBooks, it points to a broader post-COVID demand cliff across electronics — not a MacBook-specific issue.
+MacBook orders in NA spiked 4–6x during 2020 (COVID pull-forward) and have been declining nearly every quarter since landing at 30 orders in Q4 2022, below pre-pandemic 2019 levels. AOV stayed flat ($1,433–$1,696) throughout, so this is a pure volume story, not a pricing one. If this pattern extends beyond MacBooks, it points to a broader post-COVID demand cliff across electronics — not a MacBook-specific issue.
 
 2. Operational metrics (delivery) are uniform — not a lever
 Delivery time is essentially identical across all regions (7.51–7.53 days). This rules out delivery/logistics as a differentiator or pain point in this dataset — don't spend analysis time here; it's a dead end.
@@ -102,7 +105,7 @@ Delivery time is essentially identical across all regions (7.51–7.53 days). Th
 Laptops (ThinkPad, MacBook Air) refund at ~11–12%, roughly double every other product category. Low-cost accessories barely get refunded at all. This is the sharpest, most actionable signal in the whole dataset — a laptop-specific quality, expectation-mismatch, or fulfillment issue worth digging into at the SKU level.
 
 4. One product dominates demand everywhere
-AirPods are the #1 product in every region, by a wide margin. Region explains volume (EMEA/NA far outpace APAC/LATAM) but not preference — everyone wants the same thing. The more interesting question going forward is what's #2/#3 per region, since the top spot won't differentiate customer segments.
+AirPods are the #1 product in every region, by a wide margin. Region explains volume (EMEA/NA far outpace APAC/LATAM) but not preference; everyone wants the same thing. The more interesting question going forward is what's #2/#3 per region, since the top spot won't differentiate customer segments.
 
 5. Loyalty program has a real but small effect
 Loyalty members purchase ~2.3 days faster than non-members (104.4 vs 106.7 days). Directionally supports the program's value, but it's a modest nudge, not a strong driver — don't oversell it as a major behavioral lever without more evidence.
