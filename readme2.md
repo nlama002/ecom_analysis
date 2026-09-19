@@ -98,9 +98,12 @@ erDiagram
 
 ### Seasonality
 
-![Monthly Sales Trend](images/monthly_sales_trend.png)
+<img width="694" height="466" alt="Screenshot 2026-09-18 at 8 37 27 PM" src="https://github.com/user-attachments/assets/5583c384-a0a2-43b8-9b5c-6cbb694433ae" />
 
-![Average Growth Between Months](images/growth_heatmap.png)
+
+<img width="653" height="230" alt="Screenshot 2026-09-18 at 8 39 28 PM" src="https://github.com/user-attachments/assets/9a15b085-6ba7-4b95-8ad4-d2229d93be25" />
+<img width="419" height="234" alt="Screenshot 2026-09-18 at 8 39 06 PM" src="https://github.com/user-attachments/assets/13e08961-970e-434b-94a8-f0c912a0d1b0" />
+
 
 The data reveals a clear and repeatable seasonal pattern across 2020–2022. **February and October are consistently the two weakest months of the year**, averaging **-20.7%** and **-34.9%** month-over-month respectively. The October decline is worsening year over year — from -23.9% in 2020, to -25.7% in 2021, to -55.2% in 2022 — suggesting this isn't just a stable seasonal dip anymore but a trend worth investigating further.
 
@@ -112,7 +115,8 @@ The trend chart confirms this visually. **2020 and 2021 both show strong year-en
 
 ### Product Performance
 
-![Product Overview](images/product_overview.png)
+<img width="635" height="225" alt="Screenshot 2026-09-18 at 8 39 56 PM" src="https://github.com/user-attachments/assets/b273c3d5-11d5-4d82-9bba-aab028471aaa" />
+
 
 The **27in 4K Gaming Monitor** is the top revenue driver — $9.85M (35% of total sales) from 23,408 orders (21.6% of order volume) — leading sales without leading volume, meaning it carries real pricing power in the mix. **Apple Airpods Headphones drive volume, not value** — 48,404 orders (44.8% of all orders) but only $7.74M (27.5% of sales) due to a low $159.90 AOV.
 
