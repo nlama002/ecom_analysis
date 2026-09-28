@@ -1,152 +1,48 @@
-# E-commerce Order Analysis using excel
+# E-Commerce Order Analysis: Seasonality, Product Performance & Customer Behavior
 
-**Summary of Insights**
+*A dual-tool analysis of e-commerce order data using Excel and SQL (BigQuery)*
 
-**Seasonality**
+This project analyzes e-commerce order data to answer both **exploratory, visual** business questions (seasonality, product mix, sales trends over time) and **precise, relational** questions that require joining across multiple tables (regional delivery performance, refund rates by SKU, loyalty program impact, cohort behavior).
 
-The data reveals a clear and repeatable seasonal pattern across 2020–2022. February and October are consistently the two weakest months of the year, averaging -20.7% and -34.9% month-over-month respectively. The October decline is worsening year over year from -23.9% in 2020, to -25.7% in 2021, to -55.2% in 2022, which suggests this isn't just a stable seasonal dip anymore but a trend worth investigating further.
+Excel was used for trend analysis and visual reporting — pivot tables, growth-rate calculations, and conditional-formatting heatmaps. SQL (BigQuery) was used for the more complex, multi-table questions involving joins, window functions, and conditional aggregation. This mirrors how a real analytics workflow often blends both tools depending on the shape of the question being asked.
 
-March is a reliable recovery month, averaging +21.1% growth across the three years, largely offsetting the February slump. November and December consistently close out the year strong, averaging +16.9% and +24.5%, a clear holiday-driven sales lift present in every year of data. There's also a smaller, secondary dip in June (-5.4%, -4.8%, -10.8%), sitting between the early-year slump and the fall buildup, worth keeping an eye on even though it's less severe than Feb/Oct.
+---
 
-Put together, the annual rhythm looks like: strong Nov/Dec → sharp Jan/Feb drop → March rebound → gradual climb through summer → soft June → building toward a fall peak → steep October crash → recovery into the holidays again.
+## Table of Contents
 
-<img width="640" height="439" alt="Screenshot 2026-09-18 at 8 14 57 PM" src="https://github.com/user-attachments/assets/1ac8fc00-60b3-4dd0-8d2b-c46d32d80865" />
+- [Business Questions](#business-questions)
+- [Data](#data)
+- [Entity Relationship Diagram](#entity-relationship-diagram)
+- [Part 1: Excel Analysis — Seasonality & Product Performance](#part-1-excel-analysis--seasonality--product-performance)
+- [Part 2: SQL Analysis — Regional, Delivery & Loyalty Insights](#part-2-sql-analysis--regional-delivery--loyalty-insights)
+- [Combined Key Takeaways](#combined-key-takeaways)
+- [Tools](#tools)
+- [Next Steps](#next-steps)
 
-**Monthly Sales Trend**
-
-The trend chart backs up the seasonality findings visually. 2020 and 2021 both show strong year-end acceleration, climbing sharply from October into December. 2019 and 2022 sit well below 2020/2021 in total sales volume, and while both still show the same October dip, neither recovers with the same strength going into year-end — 2022 in particular falls from roughly $400K in September to under $200K in October before only partially rebounding.
-
-2020 stands out as the peak year, closing near $1.1M in December — clearly ahead of every other year from September onward. This raises a natural follow-up question: what drove that outsized Q4 2020 performance (pricing, demand shift, marketing push, product mix), and why hasn't 2021 or 2022 matched it since?
-
-What This Means
-February and October are the two months to proactively defend with promotions, bundles, or targeted campaigns, since the dip repeats every single year without exception.
-Inventory and marketing spend for Nov/Dec should be locked in well before October, given how reliably and steeply sales climb heading into year end.
-2022's underperformance relative to 2020/2021 is the more urgent open question. A follow-up analysis comparing order volume, AOV, and refund rate specifically for 2022 would help determine whether this is a demand problem, a pricing/product-mix shift, or a data completeness issue.
-
-<img width="436" height="240" alt="Screenshot 2026-09-18 at 8 09 40 PM" src="https://github.com/user-attachments/assets/a2b1ccf3-9e05-4254-aa9d-ae08dc2f83d5" />
-
-
-**Recommendations**
-
-1. Launch targeted promotions in February and October.
-These two months show a consistent, repeatable decline every single year (Feb: -20.7% avg, Oct: -34.9% avg), this isn't noise, it's a pattern stakeholders can plan around. A mid-tier discount, bundle deal, or loyalty-exclusive offer timed for early Feb and early Oct could soften the drop rather than absorbing it passively. Recommend piloting this in the next Feb/Oct cycle and measuring whether the decline narrows.
-
-2. Lock in Q4 inventory and marketing budget by September, not October.
-November (+16.9%) and December (+24.5%) are the most reliable growth months in the dataset but the sharp Oct crash right before the surge means teams need to be prepared ahead of the dip, not reacting to it. Recommend finalizing inventory levels, staffing, and ad spend commitments by the end of September each year to avoid missing the Q4 window.
-
-3. Investigate why 2022 underperformed 2020 and 2021.
-2022 total sales are meaningfully lower than the two prior years, and the October decline in 2022 (-55.2%) is nearly double the severity of 2020/2021. Before treating this as "the new normal," recommend a focused review of:
-
-Order volume vs. average order value in 2022, was it fewer customers, or the same customers spending less?
-Refund rates in 2022 vs. prior years did returns spike?
-Marketing channel and spend changes: was there a pullback in acquisition efforts?
-
-4. Prioritize marketing and inventory around the top 3-4 products.
-The 27in 4K Gaming Monitor, Apple AirPods, MacBook Air, and ThinkPad Laptop together account for roughly 96% of total revenue. Recommend concentrating promotional budget and stock planning on these products rather than spreading resources evenly across the full catalog.
-
-5. Address the elevated refund rate on laptops.
-ThinkPad Laptop (12%) and Macbook Air (11%) refund rates are more than double the company-wide average (5%), and both are high-AOV items meaning refunds here carry outsized revenue impact. Recommend a root-cause review (product quality, shipping damage, or expectation mismatch at point of sale) before the next high-volume selling season.
-
-6. Explore a bundle offer for the Samsung Charging Cable Pack.
-This product drives high order volume (20.3% of orders) but minimal revenue (1.6% of sales) due to its low price point. Recommend testing it as a checkout add-on or bundle with the Gaming Monitor or laptop lines to capture more value per transaction rather than treating it as a standalone SKU.
-
-# E-Commerce Order Analysis
-
-This project analyzes e-commerce order data using SQL (Google BigQuery) to investigate regional sales trends, delivery performance, product refund rates, product popularity by region, and purchasing behavior across loyalty and non-loyalty customers.
-
-The SQL scripts can be found [here](./sql_analysis).
+---
 
 ## Business Questions
 
-1. What were the order counts, sales, and average order value (AOV) for MacBooks sold in North America, broken down by quarter across all years?
-2. For products purchased in 2022 on the website, or on mobile in any year, which region has the highest average delivery time?
-3. What was the refund rate and refund count for each product overall?
-4. Within each region, what is the most popular product?
-5. How does time-to-first-purchase differ between loyalty and non-loyalty customers?
+| # | Question | Tool |
+|---|---|---|
+| 1 | What seasonal sales patterns exist across 2019–2022? | Excel |
+| 2 | Which products drive the most revenue vs. the most order volume? | Excel |
+| 3 | What were the order counts, sales, and AOV for MacBooks sold in North America, by quarter, across all years? | SQL |
+| 4 | For products purchased in 2022 on the website, or on mobile in any year, which region has the highest average delivery time? | SQL |
+| 5 | What was the refund rate and refund count for each product overall? | SQL |
+| 6 | Within each region, what is the most popular product? | SQL |
+| 7 | How does time-to-first-purchase differ between loyalty and non-loyalty customers? | SQL |
 
 ## Data
 
 The analysis draws on four related tables:
+
 - **`core.orders`** — order-level records (product, price, purchase timestamp, customer ID)
 - **`core.customers`** — customer records (signup date, loyalty program status, country code)
 - **`core.order_status`** — fulfillment info (delivery timestamp, refund timestamp)
 - **`core.geo_lookup`** — maps country codes to regions
 
-## Methodology
-
-Each business question was answered with a standalone SQL query (or set of queries), using:
-- **CTEs** (`WITH` clauses) to break multi-step logic into readable stages
-- **Window functions** (`ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)`) to rank and filter top values within groups
-- **Conditional aggregation** (`CASE WHEN` inside `SUM`/`AVG`) to calculate rates like refund rate
-- **Date functions** (`DATE_TRUNC`, `DATE_DIFF`, `EXTRACT`) for time-based and cohort-style analysis
-- **Multi-table joins** (`LEFT JOIN`) across orders, customers, order status, and region lookup tables
-- Basic data cleaning to standardize inconsistent product name formatting
-
-## Files
-
-| # | Question | File |
-|---|----------|------|
-| 1 | MacBook quarterly sales & AOV in North America | [`macbook_quarterly_sales_na.sql`](./sql_analysis/macbook_quarterly_sales_na.sql) |
-| 2 | Average delivery time by region (2022 website + all-year mobile) | [`avg_delivery_time_by_region.sql`](./sql_analysis/avg_delivery_time_by_region.sql) |
-| 3 | Refund rate and refund count by product | [`refund_rate_by_product.sql`](./sql_analysis/refund_rate_by_product.sql) |
-| 4 | Most popular product per region | [`top_product_by_region.sql`](./sql_analysis/top_product_by_region.sql) |
-| 5 | Time to first purchase: loyalty vs. non-loyalty customers | [`purchase_time_loyalty_vs_nonloyalty.sql`](./sql_analysis/purchase_time_loyalty_vs_nonloyalty.sql) |
-
-## Summary of Insights
-Overall Insights — Orders Dataset (BigQuery Analysis)
-
-1. Demand is contracting, sharply, post-pandemic
-MacBook orders in NA spiked 4–6x during 2020 (COVID pull-forward) and have been declining nearly every quarter since landing at 30 orders in Q4 2022, below pre-pandemic 2019 levels. AOV stayed flat ($1,433–$1,696) throughout, so this is a pure volume story, not a pricing one. If this pattern extends beyond MacBooks, it points to a broader post-COVID demand cliff across electronics — not a MacBook-specific issue.
-
-2. Operational metrics (delivery) are uniform — not a lever
-Delivery time is essentially identical across all regions (7.51–7.53 days). This rules out delivery/logistics as a differentiator or pain point in this dataset — don't spend analysis time here; it's a dead end.
-
-3. Refunds cluster hard around laptops
-Laptops (ThinkPad, MacBook Air) refund at ~11–12%, roughly double every other product category. Low-cost accessories barely get refunded at all. This is the sharpest, most actionable signal in the whole dataset — a laptop-specific quality, expectation-mismatch, or fulfillment issue worth digging into at the SKU level.
-
-4. One product dominates demand everywhere
-AirPods are the #1 product in every region, by a wide margin. Region explains volume (EMEA/NA far outpace APAC/LATAM) but not preference; everyone wants the same thing. The more interesting question going forward is what's #2/#3 per region, since the top spot won't differentiate customer segments.
-
-5. Loyalty program has a real but small effect
-Loyalty members purchase ~2.3 days faster than non-members (104.4 vs 106.7 days). Directionally supports the program's value, but it's a modest nudge, not a strong driver — don't oversell it as a major behavioral lever without more evidence.
-
-Cross-cutting theme: Region shows up a lot in your queries (delivery, product popularity) but isn't actually where the interesting variation lives — it's flat or dominated by one SKU everywhere. The two threads worth pulling next are (a) the laptop refund problem and (b) whether the MacBook demand decline is category-wide, since those are the only two places the data shows real, decision-relevant movement.
-
-
-## Recommendations
-
-Recommendations
-
-1. Investigate the laptop refund problem (highest priority)
-Laptops refund at 2x the rate of any other category (11–12% vs. 5–7% for other electronics). Recommend a root-cause review at the SKU/batch level — check for a specific defect, a sizing/spec mismatch in listings, or a shipping-damage pattern. Even a modest reduction here (e.g., 12% → 8%) would meaningfully cut return costs given laptop price points.
-
-2. Confirm whether the MacBook decline is product-specific or category-wide
-Before treating this as a MacBook problem, pull the same quarterly trend for other high-ticket electronics (iPhones, monitors). If the drop-off is dataset-wide, this is a demand-forecasting and inventory issue, not a product issue — recommend adjusting 2023 purchasing/marketing spend downward accordingly rather than assuming recovery.
-
-3. Don't invest further in regional delivery optimization
-Delivery time is flat across all regions (~7.5 days everywhere). This isn't a customer pain point or competitive lever based on current data — deprioritize any planned "reduce delivery time by region" initiatives in favor of higher-impact areas.
-
-4. Look past the #1 product when segmenting by region
-AirPods win everywhere, so top-product rankings won't reveal regional preference. Recommend re-running the popularity analysis for ranks #2–#5 per region to find where real customer taste diverges — that's where regional marketing/merchandising decisions should be based.
-
-5. Loyalty program: measure impact beyond days-to-purchase
-The 2.3-day speed-up for loyalty members is real but small. Before crediting the program with driving urgency, check higher-leverage metrics — order frequency, AOV, and repeat-purchase rate by loyalty status — to get a fuller read on ROI.
-
-6. Clean up null segments before drawing conclusions
-Several queries (region, loyalty_program) carry a meaningful null bucket. Recommend quantifying what % of records fall into null for each key dimension and either backfilling from a join source or explicitly excluding/flagging it — right now it's an unquantified asterisk on every regional and loyalty conclusion.
-
-## Next Steps
-
-- Visualize results (Excel/Tableau) — coming soon
-- Expand analysis with additional business questions as needed
-
-## Tools
-
-- **SQL (Google BigQuery / GoogleSQL)** for querying and analysis
-- **Git / GitHub** for version control
-
----
-*Part of an ongoing data analytics portfolio.*
+The Excel analysis uses a cleaned, flattened version of this same order data (`orders_data_cleaned`), standardized for product naming and purchase-date consistency.
 
 ## Entity Relationship Diagram
 
@@ -193,3 +89,122 @@ erDiagram
     string supplier
   }
 ```
+
+---
+
+## Part 1: Excel Analysis — Seasonality & Product Performance
+
+**Method:** Built pivot tables from cleaned order data to summarize monthly sales by year, then layered in manual growth-rate formulas and conditional-formatting color scales to surface seasonal patterns and product-level performance.
+
+### Seasonality
+
+<img width="694" height="466" alt="Screenshot 2026-09-18 at 8 37 27 PM" src="https://github.com/user-attachments/assets/5583c384-a0a2-43b8-9b5c-6cbb694433ae" />
+
+
+<img width="694" height="466" alt="Screenshot 2026-09-18 at 8 39 06 PM" src="https://github.com/user-attachments/assets/13e08961-970e-434b-94a8-f0c912a0d1b0" />
+
+
+The data reveals a clear and repeatable seasonal pattern across 2020–2022. **February and October are consistently the two weakest months of the year**, averaging **-20.7%** and **-34.9%** month-over-month respectively. The October decline is worsening year over year — from -23.9% in 2020, to -25.7% in 2021, to -55.2% in 2022 — suggesting this isn't just a stable seasonal dip anymore but a trend worth investigating further.
+
+**March is a reliable recovery month**, averaging **+21.1%** growth across the three years, largely offsetting the February slump. **November and December consistently close out the year strong**, averaging **+16.9%** and **+24.5%** — a clear holiday-driven sales lift present in every year of data. There's also a smaller, secondary dip in **June** (-5.4%, -4.8%, -10.8%), sitting between the early-year slump and the fall buildup.
+
+Put together, the annual rhythm looks like: **strong Nov/Dec → sharp Jan/Feb drop → March rebound → gradual climb through summer → soft June → building toward a fall peak → steep October crash → recovery into the holidays again.**
+
+The trend chart confirms this visually. **2020 and 2021 both show strong year-end acceleration**, climbing sharply from October into December. **2019 and 2022 sit well below 2020/2021 in total sales volume**, and while both still show the same October dip, neither recovers with the same strength going into year-end — 2022 in particular falls from roughly $400K in September to under $200K in October before only partially rebounding. **2020 stands out as the peak year**, closing near **$1.1M** in December — clearly ahead of every other year from September onward.
+
+### Product Performance
+
+<img width="635" height="225" alt="Screenshot 2026-09-18 at 8 39 56 PM" src="https://github.com/user-attachments/assets/b273c3d5-11d5-4d82-9bba-aab028471aaa" />
+
+
+The **27in 4K Gaming Monitor** is the top revenue driver — $9.85M (35% of total sales) from 23,408 orders (21.6% of order volume) — leading sales without leading volume, meaning it carries real pricing power in the mix. **Apple Airpods Headphones drive volume, not value** — 48,404 orders (44.8% of all orders) but only $7.74M (27.5% of sales) due to a low $159.90 AOV.
+
+**Macbook Air and ThinkPad Laptop are high-value, low-volume anchors** — together just 6.4% of order count but 33.8% of total sales. These four products (Gaming Monitor, Airpods, Macbook Air, ThinkPad) make up **~96% of total revenue**, a strong signal that marketing and inventory focus should stay concentrated here rather than spread evenly across the catalog.
+
+**Refund rate is a notable flag on laptops.** ThinkPad Laptop (12%) and Macbook Air (11%) have refund rates roughly double the 5% company-wide average — worth investigating given how much revenue rides on these two SKUs.
+
+### Part 1 Recommendations
+
+1. **Launch targeted promotions in February and October.** These months show a consistent, repeatable decline every year — a pattern worth planning around, not reacting to. Pilot a mid-tier discount or bundle offer in the next Feb/Oct cycle and measure whether the decline narrows.
+2. **Lock in Q4 inventory and marketing budget by September, not October.** The sharp Oct crash right before the Nov/Dec surge means teams need to be prepared *ahead* of the dip.
+3. **Investigate why 2022 underperformed 2020 and 2021.** Recommend a focused review of order volume vs. AOV, refund rates, and marketing spend changes specific to 2022.
+4. **Prioritize marketing and inventory around the top 4 products**, which account for ~96% of revenue.
+5. **Address the elevated refund rate on laptops** with a root-cause review (product quality, shipping damage, or expectation mismatch) given their outsized revenue impact.
+6. **Explore a bundle offer for the Samsung Charging Cable Pack** — high order volume (20.3%) but minimal revenue share (1.6%) — to capture more value per transaction.
+
+---
+
+## Part 2: SQL Analysis — Regional, Delivery & Loyalty Insights
+
+**Method:** Each business question was answered with a standalone SQL query (or set of queries) in Google BigQuery, using:
+
+- **CTEs** (`WITH` clauses) to break multi-step logic into readable stages
+- **Window functions** (`ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)`) to rank and filter top values within groups
+- **Conditional aggregation** (`CASE WHEN` inside `SUM`/`AVG`) to calculate rates like refund rate
+- **Date functions** (`DATE_TRUNC`, `DATE_DIFF`, `EXTRACT`) for time-based and cohort-style analysis
+- **Multi-table joins** (`LEFT JOIN`) across orders, customers, order status, and region lookup tables
+- Basic data cleaning to standardize inconsistent product name formatting
+
+The SQL scripts can be found [here](https://github.com/nlama002/ecom_analysis/blob/main/sql_analysis).
+
+| # | Question | File |
+|---|---|---|
+| 1 | MacBook quarterly sales & AOV in North America | [`macbook_quarterly_sales_na.sql`](https://github.com/nlama002/ecom_analysis/blob/main/sql_analysis/macbook_quarterly_sales_na.sql) |
+| 2 | Average delivery time by region (2022 website + all-year mobile) | [`avg_delivery_time_by_region.sql`](https://github.com/nlama002/ecom_analysis/blob/main/sql_analysis/avg_delivery_time_by_region.sql) |
+| 3 | Refund rate and refund count by product | [`refund_rate_by_product.sql`](https://github.com/nlama002/ecom_analysis/blob/main/sql_analysis/refund_rate_by_product.sql) |
+| 4 | Most popular product per region | [`top_product_by_region.sql`](https://github.com/nlama002/ecom_analysis/blob/main/sql_analysis/top_product_by_region.sql) |
+| 5 | Time to first purchase: loyalty vs. non-loyalty customers | [`purchase_time_loyalty_vs_nonloyalty.sql`](https://github.com/nlama002/ecom_analysis/blob/main/sql_analysis/purchase_time_loyalty_vs_nonloyalty.sql) |
+
+### Key Findings
+
+**1. Demand is contracting, sharply, post-pandemic.**
+MacBook orders in North America spiked 4–6x during 2020 (COVID pull-forward) and have declined nearly every quarter since — landing at 30 orders in Q4 2022, below pre-pandemic 2019 levels. AOV stayed flat ($1,433–$1,696) throughout, so this is a pure volume story, not a pricing one. If this pattern extends beyond MacBooks, it points to a broader post-COVID demand cliff across electronics.
+
+**2. Operational metrics (delivery) are uniform — not a lever.**
+Delivery time is essentially identical across all regions (7.51–7.53 days), ruling out delivery/logistics as a differentiator or pain point in this dataset.
+
+**3. Refunds cluster hard around laptops.**
+Laptops (ThinkPad, MacBook Air) refund at ~11–12%, roughly double every other product category. Low-cost accessories are barely refunded at all — this is the sharpest, most actionable signal in the entire dataset (and it independently corroborates the same finding from the Excel product-performance analysis in Part 1).
+
+**4. One product dominates demand everywhere.**
+AirPods are the #1 product in every region, by a wide margin. Region explains volume (EMEA/NA far outpace APAC/LATAM) but not preference — everyone wants the same thing. The more interesting question going forward is what's #2/#3 per region, since the top spot doesn't differentiate customer segments.
+
+**5. Loyalty program has a real but small effect.**
+Loyalty members purchase ~2.3 days faster than non-members (104.4 vs. 106.7 days) — directionally supports the program's value, but it's a modest nudge rather than a strong behavioral driver.
+
+**Cross-cutting theme:** Region shows up throughout these queries (delivery, product popularity) but isn't actually where the interesting variation lives — it's flat or dominated by one SKU everywhere. The two threads worth pulling next are the laptop refund problem and whether the MacBook demand decline is category-wide, since those are the only two places the data shows real, decision-relevant movement.
+
+### Part 2 Recommendations
+
+1. **Investigate the laptop refund problem (highest priority).** Recommend a root-cause review at the SKU/batch level — check for a specific defect, a listing spec mismatch, or a shipping-damage pattern.
+2. **Confirm whether the MacBook decline is product-specific or category-wide** by pulling the same quarterly trend for other high-ticket electronics before adjusting 2023 purchasing/marketing spend.
+3. **Don't invest further in regional delivery optimization** — deprioritize in favor of higher-impact areas given the flat 7.5-day pattern across all regions.
+4. **Look past the #1 product when segmenting by region** — re-run the popularity analysis for ranks #2–#5 per region to find where real customer preference diverges.
+5. **Measure loyalty program impact beyond days-to-purchase** — check order frequency, AOV, and repeat-purchase rate by loyalty status for a fuller ROI read.
+6. **Clean up null segments before drawing conclusions** — quantify the % of records with null region/loyalty values and either backfill or explicitly flag them.
+
+---
+
+## Combined Key Takeaways
+
+Bringing both analyses together, two findings stand out as the highest-priority, cross-validated signals in this dataset:
+
+- **Laptop refund rates are a confirmed, urgent problem.** Both the Excel product-performance table and the independent SQL refund-rate query arrive at the same number (~11–12% for ThinkPad and MacBook Air, roughly double every other product category) using two different tools and two different data-processing paths — strong evidence this is a real pattern, not an artifact of one method.
+- **2022/post-2020 demand softness needs a category-wide investigation.** The Excel seasonality analysis shows 2022 underperforming 2020/2021 with a worsening October crash, and the SQL analysis independently shows MacBook orders in NA declining sharply since the 2020 pandemic-driven peak. Together, these suggest a broader post-2020 demand contraction rather than an isolated product or month-specific issue — worth a dedicated follow-up analysis before finalizing 2023 planning.
+
+## Tools
+
+- **Microsoft Excel** — pivot tables, growth-rate formulas, conditional-formatting heatmaps, chart visualization
+- **SQL (Google BigQuery / GoogleSQL)** — CTEs, window functions, conditional aggregation, multi-table joins
+- **Git / GitHub** — version control and portfolio hosting
+
+## Next Steps
+
+- Investigate root cause of laptop refund rates at the SKU/batch level
+- Extend the MacBook demand-decline analysis to other high-ticket product categories
+- Visualize the SQL findings (Tableau or Excel) to match the visual polish of Part 1
+- Expand the business-question set as new stakeholder needs arise
+
+---
+
+*Part of an ongoing data analytics portfolio.*
