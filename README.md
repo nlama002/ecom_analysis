@@ -4,7 +4,7 @@
 
 ## Key Findings at a Glance
 
-- **4 products drive ~96% of revenue.** The 27in 4K Gaming Monitor leads with $9.85M (35% of sales), while AirPods drive 45% of orders but only 27.5% of revenue.
+- **4 products drive ~96% of revenue.** The 27in 4K Gaming Monitor leads with $9.85M (35% of revenue), while AirPods drive 45% of orders but only 27.5% of revenue.
 - **Laptops are refunded at 2x the company average.** ThinkPad (12%) and MacBook Air (11%) vs. 5% overall. These are high-price items, so each refund costs a lot.
 - **October sales drop every year, and the drop is getting worse.** Month-over-month declines went from -23.9% (2020) to -25.7% (2021) to -55.2% (2022), right before the Nov/Dec holiday surge.
 - **MacBook demand in North America peaked in 2020 and has fallen since.** Orders spiked 4–6x during the pandemic and dropped below 2019 levels by Q4 2022, while average order value stayed flat. Fewer people are buying; prices didn't change.
